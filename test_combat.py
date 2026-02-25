@@ -1,4 +1,3 @@
-# test_combat.py
 from app import app
 from models import db
 from models.pokemon import Pokemon
@@ -6,12 +5,10 @@ from models.combat import Combat
 from services.battle_engine import BattleEngine
 
 def run_test_combat(p1, p2):
-    """Effectue un combat entre deux objets Pokémon"""
     with app.app_context():
         battle = BattleEngine(p1, p2)
         winner, turns, logs = battle.fight()
 
-        # Enregistrement dans la DB
         combat_record = Combat(
             pokemon1_id=p1.id,
             pokemon2_id=p2.id,
@@ -22,7 +19,6 @@ def run_test_combat(p1, p2):
         db.session.add(combat_record)
         db.session.commit()
 
-        # Affichage des résultats
         print(f"\nCombat terminé : {p1.name} vs {p2.name}")
         print(f"Gagnant : {winner.name} en {turns} tours")
         print("Logs du combat :")
@@ -30,7 +26,6 @@ def run_test_combat(p1, p2):
             print(log)
 
 def get_pokemon():
-    """Demande à l'utilisateur de choisir un Pokémon par nom ou ID"""
     choice_type = input("Voulez-vous choisir par 'id' ou par 'nom' ? ").strip().lower()
     with app.app_context():
         if choice_type == "id":

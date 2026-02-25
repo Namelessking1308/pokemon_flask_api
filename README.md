@@ -23,6 +23,7 @@ Ce projet est un mini-projet Python/Flask/PostgreSQL visant à :
    - Calcul des dégâts basé sur HP, attaque et défense
    - Retour du gagnant, du nombre de tours et d’un log détaillé tour par tour
    - Stockage automatique des combats dans la table `combats`
+   - Possibilité de choisir les Pokémon **par ID ou par nom** dans le script `test_combat.py`
 
 3. **API Flask** 🔹
    - Endpoint pour récupérer un Pokémon par nom :  
@@ -87,8 +88,8 @@ cd pokemon-flask-api
 │   └─ pokeapi_service.py
 ├─ import_all_pokemon.py # script pour importer les Pokémon depuis l’API
 ├─ create_db.py          # script pour créer la DB et les tables
-├─ test_combat           # fichier pour tester les combats
-├─ update_db            # fichier pour mettre à jour la DB
+├─ test_combat.py        # fichier pour tester les combats
+├─ update_db.py          # fichier pour mettre à jour la DB
 ├─ requirements.txt      # dépendances Python
 ├─ README.md             # ce fichier
 ├─ .env                  # fichier local avec secrets (non versionné)
