@@ -4,12 +4,11 @@ from models.pokemon import Pokemon
 from models.combat import Combat
 from services.battle_engine import BattleEngine
 
-pokemon_bp = Blueprint("pokemon_bp", __name__)
+combat_bp = Blueprint("combat_bp", __name__)
 
-@pokemon_bp.route("/combat", methods=["POST"])
+@combat_bp.route("/combat", methods=["POST"])
 def combat():
     data = request.get_json()
-
     p1 = Pokemon.query.get(data.get("pokemon1_id"))
     p2 = Pokemon.query.get(data.get("pokemon2_id"))
 
