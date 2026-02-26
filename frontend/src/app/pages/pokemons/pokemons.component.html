@@ -1,8 +1,0 @@
-<h2>Liste des Pokémon</h2>
-<div class="pokemon-list">
-  <div *ngFor="let p of pokemons">
-    <img [src]="p.sprite_url" alt="{{p.name}}" width="80">
-    <p>{{p.name}}</p>
-    <p>HP: {{p.hp}} | ATK: {{p.attack}} | DEF: {{p.defense}}</p>
-  </div>
-</div>
