@@ -11,10 +11,18 @@ export interface Pokemon {
   sprite_url: string;
 }
 
+export interface CombatLog {
+  attacker: string;
+  defender: string;
+  damage: number;
+  hp1: number;
+  hp2: number;
+}
+
 export interface CombatResult {
   winner: string;
   turns: number;
-  logs: string[];
+  logs: CombatLog[];
   hp1: number;
   hp2: number;
 }
@@ -38,3 +46,4 @@ export class PokemonService {
     });
   }
 }
+

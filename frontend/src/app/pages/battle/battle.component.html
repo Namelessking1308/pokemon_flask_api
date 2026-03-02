@@ -1,27 +1,70 @@
-<h2>Arène Pokémon</h2>
+<h2>⚔️ Combat Pokémon</h2>
 
-<div class="battle-menu">
-  <div class="pokemon-selection">
+<div class="selection-container">
+
+  <!-- JOUEUR 1 -->
+  <div class="player-column">
     <h3>Joueur 1</h3>
-    <select [(ngModel)]="selected1">
-      <option *ngFor="let p of pokemons" [ngValue]="p">{{p.name}}</option>
-    </select>
+    <div class="pokemon-list">
+      <div
+        *ngFor="let p of pokemons"
+        (click)="selectPlayer1(p)"
+        [class.selected]="player1Selected?.id === p.id"
+      >
+        <img [src]="p.sprite_url" />
+        <p>{{p.name}}</p>
+      </div>
+    </div>
   </div>
 
-  <div class="pokemon-selection">
+  <!-- JOUEUR 2 -->
+  <div class="player-column">
     <h3>Joueur 2</h3>
-    <select [(ngModel)]="selected2">
-      <option *ngFor="let p of pokemons" [ngValue]="p">{{p.name}}</option>
-    </select>
+    <div class="pokemon-list">
+      <div
+        *ngFor="let p of pokemons"
+        (click)="selectPlayer2(p)"
+        [class.selected2]="player2Selected?.id === p.id"
+      >
+        <img [src]="p.sprite_url" />
+        <p>{{p.name}}</p>
+      </div>
+    </div>
   </div>
+
 </div>
 
-<button (click)="startBattle()" class="start-battle-btn">Lancer le combat</button>
+<button
+  class="start-btn"
+  (click)="startBattle()"
+  [disabled]="!player1Selected || !player2Selected || inCombat"
+>
+   Lancer le combat
+</button>
 
-<div *ngIf="result" class="battle-result">
-  <h3>Gagnant: {{result.winner}}</h3>
-  <p>Nombre de tours: {{result.turns}}</p>
-  <ul>
-    <li *ngFor="let log of result.logs">{{log}}</li>
-  </ul>
+<!-- ARENE -->
+<div class="arena" *ngIf="player1Selected && player2Selected">
+
+  <div class="pokemon-fight">
+
+    <div>
+      <div class="hp-bar">
+        <div class="hp-fill" [style.width.%]="hp1Percent"></div>
+      </div>
+      <img id="p1-img" [src]="player1Selected.sprite_url" />
+    </div>
+
+    <div>
+      <div class="hp-bar">
+        <div class="hp-fill" [style.width.%]="hp2Percent"></div>
+      </div>
+      <img id="p2-img" [src]="player2Selected.sprite_url" />
+    </div>
+
+  </div>
+
+  <h3 *ngIf="result && !inCombat">
+    🏆 {{result.winner}} gagne en {{result.turns}} tours !
+  </h3>
+
 </div>

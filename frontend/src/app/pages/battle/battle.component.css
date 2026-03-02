@@ -1,37 +1,87 @@
-.battle-menu {
+.selection-container {
   display: flex;
   justify-content: space-around;
-  margin: 20px 0;
+  margin-bottom: 30px;
 }
 
-.pokemon-selection select {
+.player-column {
+  width: 45%;
+}
+
+.pokemon-list {
+  max-height: 300px;
+  overflow-y: auto;
+  border: 1px solid #ddd;
+  padding: 10px;
+}
+
+.pokemon-list div {
+  display: flex;
+  align-items: center;
+  gap: 10px;
   padding: 5px;
-  font-size: 1rem;
+  cursor: pointer;
+  border-radius: 6px;
 }
 
-.start-battle-btn {
+.pokemon-list div:hover {
+  background: #f0f0f0;
+}
+
+.selected {
+  border: 2px solid blue;
+}
+
+.selected2 {
+  border: 2px solid red;
+}
+
+.start-btn {
   display: block;
-  margin: 0 auto 20px;
+  margin: 20px auto;
   padding: 10px 20px;
-  font-size: 1.2rem;
-  background-color: #3b4cca;
-  color: #fff;
+  font-size: 16px;
+  background: orange;
   border: none;
   border-radius: 8px;
   cursor: pointer;
-  transition: all 0.3s;
 }
 
-.start-battle-btn:hover {
-  background-color: #ffcb05;
-  color: #3b4cca;
-}
-
-.battle-result {
+.arena {
   text-align: center;
-  margin-top: 20px;
+  margin-top: 30px;
 }
 
-.battle-result h3 {
-  color: #3b4cca;
+.pokemon-fight {
+  display: flex;
+  justify-content: center;
+  gap: 80px;
+  align-items: center;
+}
+
+.hp-bar {
+  width: 150px;
+  height: 15px;
+  background: #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+  margin-bottom: 10px;
+}
+
+.hp-fill {
+  height: 100%;
+  background: green;
+  transition: width 0.5s ease;
+}
+
+.attack {
+  animation: shake 0.3s;
+}
+
+@keyframes shake {
+  0% { transform: translateX(0); }
+  25% { transform: translateX(-10px); }
+  50% { transform: translateX(10px); }
+  75% { transform: translateX(-10px); }
+  100% { transform: translateX(0); }
 }
