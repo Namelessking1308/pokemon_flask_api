@@ -3,18 +3,27 @@ __pycache__/
 *.pyc
 *.pyo
 *.pyd
-*.sqlite3
 .env
+*.sqlite3
 
-node_modules/
-dist/
-.angular/
-package-lock.json
-yarn.lock
-
-.vscode/
-.idea/
-.DS_Store
-Thumbs.db
-
+# Logs
 *.log
+
+# MacOS
+.DS_Store
+
+# Node / Angular
+frontend/node_modules/
+frontend/dist/
+frontend/.angular/
+frontend/.vscode/
+
+# IDE / Editor
+*.sublime-workspace
+*.sublime-project
+.idea/
+.vscode/
+
+# Misc
+*.bak
+*.tmp

@@ -1,0 +1,27 @@
+<h2>Arène Pokémon</h2>
+
+<div class="battle-menu">
+  <div class="pokemon-selection">
+    <h3>Joueur 1</h3>
+    <select [(ngModel)]="selected1">
+      <option *ngFor="let p of pokemons" [ngValue]="p">{{p.name}}</option>
+    </select>
+  </div>
+
+  <div class="pokemon-selection">
+    <h3>Joueur 2</h3>
+    <select [(ngModel)]="selected2">
+      <option *ngFor="let p of pokemons" [ngValue]="p">{{p.name}}</option>
+    </select>
+  </div>
+</div>
+
+<button (click)="startBattle()" class="start-battle-btn">Lancer le combat</button>
+
+<div *ngIf="result" class="battle-result">
+  <h3>Gagnant: {{result.winner}}</h3>
+  <p>Nombre de tours: {{result.turns}}</p>
+  <ul>
+    <li *ngFor="let log of result.logs">{{log}}</li>
+  </ul>
+</div>

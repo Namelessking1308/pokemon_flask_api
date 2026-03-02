@@ -17,7 +17,7 @@ def get_all_pokemons():
             "hp": p.hp,
             "attack": p.attack,
             "defense": p.defense,
-            "sprite": p.sprite_url
+            "sprite_url": p.sprite_url
         })
 
     return jsonify(result), 200
